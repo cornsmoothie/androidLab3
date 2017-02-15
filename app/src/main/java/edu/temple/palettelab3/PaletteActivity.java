@@ -31,7 +31,7 @@ public class PaletteActivity extends AppCompatActivity {
 
         final RelativeLayout pallette_activity = (RelativeLayout) findViewById(R.id.activity_palette);
 
-        final ArrayAdapter<String> colorAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, colors);
+        final customadapter colorAdapter = new customadapter(PaletteActivity.this , android.R.layout.simple_list_item_1 , colors);
 
         colorSpinner.setAdapter(colorAdapter);
 
@@ -51,19 +51,5 @@ public class PaletteActivity extends AppCompatActivity {
 
         colorSpinner.setOnItemSelectedListener(spinnerListener);
     }
-    private class customadapter extends ArrayAdapter<String> {
-
-        public customadapter(Context context , List<String> objects) {
-            super(context , android.R.layout.simple_list_item_1 , objects);
-        }
-
-        @Override
-        public View getView(int position , View convertView , ViewGroup parent) {
-            View v = super.getView(position , convertView , parent);
-            v.setBackgroundColor(Color.parseColor(colorSpinner.getSelectedItem().toString()));
-            return v;
-        }
-
-}
 }
 
